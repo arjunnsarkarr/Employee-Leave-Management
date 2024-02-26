@@ -6,6 +6,7 @@ const {
   adminSignin,
   adminSignOut,
   adminHome,
+  adminChangePassword,
   
 } = require("../controllers/adminController");
 const { isLoggedIn } = require("../middlewares/isLoggedIn");
@@ -15,6 +16,7 @@ router.post("/signup", adminSignup);
 router.post("/signin", adminSignin);
 router.post("/adminHome", isLoggedIn, adminHome);
 router.get("/adminSignOut", isLoggedIn, adminSignOut);
+router.post("/adminChangePassword", isLoggedIn, adminChangePassword);
 
 
 

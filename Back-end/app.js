@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 4041;
 // cors policy
 const cors = require("cors");
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "http://localhost:5173",
   credentials: true,
   optionSuccessStatus: 200,
 };
@@ -43,6 +43,7 @@ app.use(cookieParser());
 app.use("/api/admin", require("./routes/adminRoutes"));
 app.use("/api/department", require("./routes/departmentRoutes"));
 app.use("/api/leaveType", require("./routes/leaveTypeRoutes"));
+app.use("/api/leave", require("./routes/LeaveRoutes"));
 app.use("/api/employee", require("./routes/employeeRoute"));
 
 // error handling

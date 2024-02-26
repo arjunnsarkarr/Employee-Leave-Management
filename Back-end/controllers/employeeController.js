@@ -88,7 +88,6 @@ exports.updateEmployee = catchAsyncErrors(async (req, res, next) => {
   const City = req.body.City;
   const Country = req.body.Country;
   const Mobile = req.body.Mobile;
-  const Mode = req.body.Mode;
   const employee = await Employee.findOneAndUpdate(
     { _id: req.body._id },
     {
@@ -101,7 +100,6 @@ exports.updateEmployee = catchAsyncErrors(async (req, res, next) => {
         City: City,
         Country: Country,
         Mobile: Mobile,
-        Mode: Mode,
       },
     }
   );

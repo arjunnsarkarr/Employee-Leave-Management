@@ -50,3 +50,25 @@ exports.adminSignOut = catchAsyncErrors(async (req, res, next) => {
   res.clearCookie("token");
   res.json("Signed Out");
 });
+
+exports.adminChangePassword = catchAsyncErrors(async (req, res, next) => {
+  const admin = await Admin.findOne({ _id: req.body._id })
+    .select("+password")
+    .exec();
+  let salt = bcrypt.genSaltSync(10);
+  const hashPassword = bcrypt.hashSync(req.body.newPassword, salt);
+  const isMatched = bcrypt.compareSync(req.body.oldPassword, admin.password);
+  if (isMatched) {
+    const admin = await Admin.findOneAndUpdate(
+      {
+        _id: req.body._id,
+      },
+      {
+        $set: { password: hashPassword },
+      }
+    );
+    res.json({ admin, message: 200 });
+  } else {
+    res.json({ message: 204, errorr: "Enter Correct Password " });
+  }
+});

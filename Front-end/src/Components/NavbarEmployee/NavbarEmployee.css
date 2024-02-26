@@ -1,0 +1,15 @@
+.bn632-hover {
+    width: 9vw;
+    font-weight: 600;
+    height: inherit;
+    margin-left: 2px;
+    border-radius: 50px;
+}
+
+.bn632-hover.bn28 {
+    background-image: linear-gradient(to right,
+            #eb3941,
+            #f15e64,
+            #e14e53,
+            #e2373f);
+}
